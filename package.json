@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "dependencies": {
+    "eslint": "^8.56.0",
+    "mongoose": "^8.0.3"
+  }
+}
