@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import MainContainer from './containers/MainContainer.jsx';
 
 const App = () => {
   return(
-    <h1>George</h1>
+    < MainContainer />
   );
 };
 
