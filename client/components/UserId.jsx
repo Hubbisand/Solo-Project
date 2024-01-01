@@ -1,6 +1,10 @@
 import React from 'react';
 
-const UserId = () => {
+const UserId = props => {
+  const wishlistCapture = event => {
+    return props.updateUser(event.target.value);
+  };
+
   return (
     <div>
       <h1>Wishlist Price Comparer</h1>
@@ -9,8 +13,10 @@ const UserId = () => {
         <input 
           id='SteamId'
           type='number'
+          onChange={wishlistCapture}
+          value={props.userNum}
         />
-        <button type='submit'>Populate Wishlist</button>
+        <button onClick={props.updateWishlist}>Populate Wishlist</button>
       </div>
     </div>
   );

@@ -40,9 +40,10 @@ module.exports = {
   },
   devServer: {
     port: 8080,
-    // proxy: {
-    //   '/': 'http://localhost:3000'
-    // },
+    // open: true,
+    proxy: {
+      '/wishlist': 'http://localhost:3000'
+    },
     hot: true,
     static: {
       directory: path.resolve(__dirname, 'build'),

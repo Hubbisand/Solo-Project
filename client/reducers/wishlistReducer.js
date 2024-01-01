@@ -1,4 +1,4 @@
-import * as types from '..constants/actionTypes.js';
+import * as types from '../constants/actionTypes.js';
 
 const initialWishlist = {
   gameIds: [],
@@ -15,22 +15,24 @@ const wishlistReducer = (state = initialWishlist, action) => {
     };
 
   case types.UPDATE_WISHLIST:
-    const url = `https://store.steampowered.com/wishlist/profiles/${state.userId}/wishlistdata/`;
-    fetch(url)
-      .then(data => data.json())
-      .then(wishlist => {
-        const newGameIds = [];
-        const newGameNames = [];
-        for (const id in wishlist) {
-          newGameIds.push(id);
-          newGameNames.push(wishlist[id].name);
-        }
-        return {
-          gameIds: newGameIds,
-          gameNames: newGameNames,
-          userId: 0
-        };
-      });
+    console.log(action.payload);
+    const newGameIds = [];
+    const newGameNames = [];
+    for (const id in action.payload) {
+      newGameIds.push(id);
+      newGameNames.push(action.payload[id].name);
+    }
+    console.log(newGameIds);
+    return {
+      gameIds: newGameIds,
+      gameNames: newGameNames,
+      userId: 0
+    };
+    
+
+  default: {
+    return state;
+  }
   }
 };
 
