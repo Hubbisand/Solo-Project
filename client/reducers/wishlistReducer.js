@@ -3,7 +3,7 @@ import * as types from '../constants/actionTypes.js';
 const initialWishlist = {
   gameIds: [],
   gameNames: [],
-  userId: 0
+  userId: ''
 };
 
 const wishlistReducer = (state = initialWishlist, action) => {
@@ -23,13 +23,13 @@ const wishlistReducer = (state = initialWishlist, action) => {
       newGameNames.push(action.payload[id].name);
     }
     console.log(newGameIds);
+    console.log(newGameNames);
     return {
       gameIds: newGameIds,
       gameNames: newGameNames,
-      userId: 0
+      userId: ''
     };
     
-
   default: {
     return state;
   }
