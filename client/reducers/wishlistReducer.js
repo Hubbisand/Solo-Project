@@ -3,6 +3,7 @@ import * as types from '../constants/actionTypes.js';
 const initialWishlist = {
   games: [],
   stores: {},
+  deals: {},
   userId: ''
 };
 
@@ -37,6 +38,30 @@ const wishlistReducer = (state = initialWishlist, action) => {
     return {
       ...state,
       stores: newStores
+    };
+
+  case types.UPDATE_DEALS:
+    const newDeals = {
+      steamId: action.payload.info.steamAppID,
+      deals: []
+    };
+    if (Array.isArray(action.payload.deals)) {
+      action.payload.deals.forEach(deal => {
+        newDeals.deals.push({
+          storeId: state.stores[deal.storeID],
+          price: deal.price
+        });
+      });
+    } else {
+      newDeals.push({
+        storeId: 'Not for Sale',
+        price: 'Not for Sale'
+      });
+    }
+    console.log('Deals => ', newDeals);
+    return {
+      ...state,
+      deals: newDeals
     };
 
   default: {

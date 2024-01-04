@@ -8,11 +8,11 @@ const WishlistDisplay = props => {
     gameId = {el.gameId}
     getDeals = {props.getDeals}
     index = {idx}
-    deals = {props.getDeals}
+    dealList = {props.dealList}
     key = {idx}
   />);
 
-  console.log(wishlist)
+  console.log(wishlist);
   return(
     <div>
       <h2>Wishlist</h2>

@@ -44,7 +44,7 @@ apiController.getDeals = async (req, res, next) => {
       .then(data => data.json())
       .then(dealData => {
         console.log('Deal Data => ', dealData);
-        return dealData.deals;
+        return dealData;
       });
     res.locals.deals = deals;
     return next();
