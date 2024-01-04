@@ -1,8 +1,8 @@
 import * as types from '../constants/actionTypes.js';
 
 const initialWishlist = {
-  gameIds: [],
-  gameNames: [],
+  games: [],
+  stores: {},
   userId: ''
 };
 
@@ -15,21 +15,30 @@ const wishlistReducer = (state = initialWishlist, action) => {
     };
 
   case types.UPDATE_WISHLIST:
-    console.log(action.payload);
-    const newGameIds = [];
-    const newGameNames = [];
+    const newGames = [];
     for (const id in action.payload) {
-      newGameIds.push(id);
-      newGameNames.push(action.payload[id].name);
+      newGames.push({
+        gameId : id,
+        gameName: action.payload[id].name
+      });
     }
-    console.log(newGameIds);
-    console.log(newGameNames);
     return {
-      gameIds: newGameIds,
-      gameNames: newGameNames,
+      ...state,
+      games: newGames,
       userId: ''
     };
-    
+
+  case types.UPDATE_STORES:
+    const newStores = {};
+    action.payload.forEach(element => {
+      newStores[element.storeID] = element.storeName;
+    });
+    console.log(newStores);
+    return {
+      ...state,
+      stores: newStores
+    };
+
   default: {
     return state;
   }

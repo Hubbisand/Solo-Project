@@ -5,6 +5,11 @@ const UserId = props => {
     return props.updateUser(event.target.value);
   };
 
+  const updateWishlistAndStores = () => {
+    props.updateWishlist();
+    props.getStores();
+  };
+
   return (
     <div>
       <h1>Wishlist Price Comparer</h1>
@@ -16,7 +21,7 @@ const UserId = props => {
           onChange={wishlistCapture}
           value={props.userNum}
         />
-        <button onClick={props.updateWishlist}>Populate Wishlist</button>
+        <button onClick={updateWishlistAndStores}>Populate Wishlist</button>
       </div>
     </div>
   );

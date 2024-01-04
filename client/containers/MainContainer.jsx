@@ -8,8 +8,7 @@ const MainContainer = props => {
   const dispatch = useDispatch();
   
   const userNum = useSelector(state => state.wishlist.userId);
-  const wishlistNames = useSelector(state => state.wishlist.gameNames);
-  const wishlitIds = useSelector(state => state.wishlist.gameIds);
+  const wishlist = useSelector(state => state.wishlist.games);
   
   function updateUser(input) {
     return dispatch(actions.updateUserActionCreator(input));
@@ -24,8 +23,6 @@ const MainContainer = props => {
         'Content-Type': 'application/json',
       },
     };
-    console.log('User ID => ', userNum)
-    console.log('Game State => ', wishlistNames);
     fetch('/wishlist', requestOptions)
       .then(response => response.json())
       .then(wishlist => {
@@ -33,16 +30,42 @@ const MainContainer = props => {
       });
   }
 
+  function getDeals(gameSteamId) {
+    const requestOptions = {
+      method: 'POST',
+      body: JSON.stringify({body: gameSteamId}),
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    fetch('/wishlist/:appId', requestOptions)
+      .then(data => data.json())
+      .then(deals => {
+        console.log(deals);
+      });
+  }
+
+  function getStores() {
+    fetch('/stores', {
+      method: 'GET',
+      mode: 'cors'
+    })
+      .then(data => data.json())
+      .then(stores => dispatch(actions.updateStoresActionCreator(stores)));
+  }
+
   return (
     <div>
       <UserId 
         updateUser = {updateUser}
         updateWishlist = {updateWishlist}
+        getStores = {getStores}
         userNum = {userNum}
       />
       <WishlistDisplay
-        names = {wishlistNames}
-        ids = {wishlitIds}
+        wishlist = {wishlist}
+        getDeals = {getDeals}
       />
     </div>
   );

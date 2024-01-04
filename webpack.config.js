@@ -42,7 +42,9 @@ module.exports = {
     port: 8080,
     // open: true,
     proxy: {
-      '/wishlist': 'http://localhost:3000'
+      '/': 'http://localhost:3000'
+      // '/wishlist': 'http://localhost:3000',
+      // '/cheapshark': 'http://localhost:3000'
     },
     hot: true,
     static: {

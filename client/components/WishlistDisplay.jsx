@@ -3,9 +3,12 @@ import WishlistItem from './WishlistItem.jsx';
 
 const WishlistDisplay = props => {
   
-  const wishlist = props.names.map((el, idx) => <WishlistItem 
-    gameName = {el}
-    index = {idx + 1}
+  const wishlist = props.wishlist.map((el, idx) => <WishlistItem 
+    gameName = {el.gameName}
+    gameId = {el.gameId}
+    getDeals = {props.getDeals}
+    index = {idx}
+    deals = {props.getDeals}
     key = {idx}
   />);
 

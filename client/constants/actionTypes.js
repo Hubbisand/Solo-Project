@@ -1,2 +1,4 @@
 export const UPDATE_WISHLIST = 'UPDATE_WISHLIST';
 export const UPDATE_USER = 'UPDATE_USER';
+export const UPDATE_STORES = 'UPDATE_STORES';
+export const UPDATE_DEALS = 'UPDATE_DEALS';
