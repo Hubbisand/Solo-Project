@@ -21,15 +21,13 @@ apiController.getStores = (req, res, next) => {
 
 apiController.getDsId = async (req, res, next) => {
   const steamAppId = req.body;
-  console.log('params => ', steamAppId.body);
   const dsId = await fetch('https://www.cheapshark.com/api/1.0/games?steamAppID=' + steamAppId.body)
     .then(data => data.json())
     .then(item => {
       if (item.length !== 0) {
-        console.log('DS ID => ', item);
         return item[0].gameID;
       } else {
-        console.log('Undefined')
+        res.locals.steamId = steamAppId.body;
         res.locals.dsId = undefined;
         return next();
       }
@@ -39,18 +37,19 @@ apiController.getDsId = async (req, res, next) => {
 };
   
 apiController.getDeals = async (req, res, next) => {
+  const steamId = res.locals.steamId;
   if (res.locals.dsId !== undefined) {
     const deals = await (fetch('https://www.cheapshark.com/api/1.0/games?id=' + res.locals.dsId))
       .then(data => data.json())
       .then(dealData => {
-        console.log('Deal Data => ', dealData);
         return dealData;
       });
     res.locals.deals = deals;
     return next();
   } else {
-    console.log('Undefined Again')
-    res.locals.deals = 'no deals';
+    res.locals.deals = {
+      steamId: steamId
+    };
     return next();
   }
 };

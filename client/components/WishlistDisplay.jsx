@@ -12,10 +12,9 @@ const WishlistDisplay = props => {
     key = {idx}
   />);
 
-  console.log(wishlist);
   return(
     <div>
-      <h2>Wishlist</h2>
+      {/* <h2>Wishlist</h2> */}
       {wishlist}
     </div>
   );

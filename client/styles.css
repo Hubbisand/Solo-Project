@@ -1,0 +1,59 @@
+* {
+  color: white;
+}
+
+html {
+  background-color: #1b2838;
+}
+
+button {
+  color: black;
+}
+
+input {
+  color: black;
+}
+
+h1 {
+  text-align: center;
+}
+
+.inputField {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.storeName {
+  margin-right: 2%;
+}
+
+.userButton {
+  margin-left: 1em;
+}
+
+#steamLogo {
+  width: 100px;
+  margin: auto;
+  display: block;
+}
+
+#gameName {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+#itemDiv {
+  background-color: rgba(64, 81, 99, .9);
+  padding: 1em;
+  margin-bottom: 1%;
+  border-radius: 30px;
+}
+
+#dealDiv {
+  font-size: 1.2em;
+  margin-bottom: .3em;
+}
+
+#deals {
+  font-weight: 100;
+}

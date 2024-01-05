@@ -11,17 +11,18 @@ const UserId = props => {
   };
 
   return (
-    <div>
+    <div id='topDiv'>
+      <img id='steamLogo' src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Steam_logo.png/240px-Steam_logo.png' />
       <h1>Wishlist Price Comparer</h1>
-      <div>
-        <label htmlFor='SteamId'>Please input Steam ID:</label>
+      <div className='inputField'>
+        <label htmlFor='SteamId'>Please input Steam ID Number: </label>
         <input 
           id='SteamId'
           type='number'
           onChange={wishlistCapture}
           value={props.userNum}
         />
-        <button onClick={updateWishlistAndStores}>Populate Wishlist</button>
+        <button className='userButton' onClick={updateWishlistAndStores}>Populate Wishlist</button>
       </div>
     </div>
   );

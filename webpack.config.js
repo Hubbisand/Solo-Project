@@ -5,6 +5,7 @@ module.exports = {
   entry: './client/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     filename: 'bundle.js'
   },
   mode: process.env.NODE_ENV,
@@ -49,7 +50,7 @@ module.exports = {
     hot: true,
     static: {
       directory: path.resolve(__dirname, 'build'),
-      publicPath: '/build/'
+      publicPath: '/'
     }
   }
 };

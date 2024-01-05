@@ -7,6 +7,7 @@ const WishlistItem = props => {
   const dealGen = () => {
     if (props.gameId === props.dealList.steamId) {
       const deals = props.dealList.deals.map((deal, idx) => <ItemDeals
+        dealLink = {deal.dealLink}
         storeName = {deal.storeId}
         price = {deal.price}
         key = {idx}
@@ -18,9 +19,9 @@ const WishlistItem = props => {
   const dealReturn = dealGen();
 
   return(
-    <div>
+    <div id='itemDiv'>
       <p>
-        <span id='gameName'>{props.gameName}</span>
+        <span id='gameName'>{props.gameName} </span>
         <button onClick={grabDeals}>Get Deals</button>
       </p>
       <div>

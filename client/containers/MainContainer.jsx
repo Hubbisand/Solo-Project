@@ -57,7 +57,7 @@ const MainContainer = props => {
   }
 
   return (
-    <div>
+    <div id='mainDiv'>
       <UserId 
         updateUser = {updateUser}
         updateWishlist = {updateWishlist}

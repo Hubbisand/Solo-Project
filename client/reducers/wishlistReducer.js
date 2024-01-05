@@ -34,7 +34,6 @@ const wishlistReducer = (state = initialWishlist, action) => {
     action.payload.forEach(element => {
       newStores[element.storeID] = element.storeName;
     });
-    console.log(newStores);
     return {
       ...state,
       stores: newStores
@@ -42,23 +41,23 @@ const wishlistReducer = (state = initialWishlist, action) => {
 
   case types.UPDATE_DEALS:
     const newDeals = {
-      steamId: action.payload.info.steamAppID,
       deals: []
     };
-    if (Array.isArray(action.payload.deals)) {
+    if(action.payload.info) {
+      newDeals.steamId = action.payload.info.steamAppID;
       action.payload.deals.forEach(deal => {
         newDeals.deals.push({
+          dealLink: `https://www.cheapshark.com/redirect?dealID=${deal.dealID}`,
           storeId: state.stores[deal.storeID],
           price: deal.price
         });
       });
     } else {
-      newDeals.push({
-        storeId: 'Not for Sale',
-        price: 'Not for Sale'
+      newDeals.steamId = action.payload.steamId;
+      newDeals.deals.push({
+        price : 'Not for Sale Yet'
       });
     }
-    console.log('Deals => ', newDeals);
     return {
       ...state,
       deals: newDeals

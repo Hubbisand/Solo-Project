@@ -2,9 +2,9 @@ import React from 'react';
 
 const ItemDeals = props => {
   return (
-    <div>
-      <label htmlFor='deal'>{props.storeName}</label>
-      <span id='deas'>{props.price}</span>
+    <div id='dealDiv'>
+      <a className='storeName' href={props.dealLink}>{props.storeName}</a>
+      <span id='deals'>{props.price}</span>
     </div>
   );
 };
